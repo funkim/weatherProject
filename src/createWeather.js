@@ -1,4 +1,5 @@
 import { getWeather } from "./getWeather";
+import { getFutureForcast } from "./getWeather";
 
 const aContainer = document.querySelector('.container');
 
