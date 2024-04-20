@@ -21,6 +21,8 @@ export async function getDailyWeather(getFutureForcast) {
         tempatureShowLow.textContent = `${tempatureLow}°F`
         tempatureShowHigh.textContent = `${tempatureHigh}°F`
     }
-    eachDay('dayOne',futureWeatherData.forecast.forecastday[0].day.mintemp_f,futureWeatherData.forecast.forecastday[0].day.maxtemp_f, 'dayOne' )
-
+    for (let i = 0; i < 6; i++) {
+        let dayCount = i.toString();
+    eachDay(dayCount,futureWeatherData.forecast.forecastday[i].day.mintemp_f,futureWeatherData.forecast.forecastday[i].day.maxtemp_f, dayCount )
+    }
 }
