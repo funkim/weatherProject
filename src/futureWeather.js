@@ -2,27 +2,27 @@ import { getFutureForcast } from "./getWeather";
 
 const aContainer = document.querySelector('.container');
 
-export function showDailyWeather() {
+export async function getDailyWeather(getFutureForcast) {
+    const futureWeatherData = await getFutureForcast();
     const sevenDayContainer = document.createElement('div') 
     sevenDayContainer.classList.add('futureForecast')
     aContainer.appendChild(sevenDayContainer)
-}
-
-export async function getDailyWeather(getFutureForcast) {
-    const futureWeatherData = await getFutureForcast();
-    function eachDay(date, tempatureLow,tempatureHigh, classOfDay) {
+    function eachDay(dateDisplayed , date, tempatureLow , tempatureHigh, classOfDay) {
         date = document.createElement("div");
         date.classList.add(classOfDay)
-        aContainer.appendChild(date);
+        sevenDayContainer.appendChild(date);
+        let showDate = document.createElement('h3')
         let tempatureShowLow = document.createElement('p');
         let tempatureShowHigh = document.createElement('p')
+        date.appendChild(showDate)
         date.appendChild(tempatureShowLow);
         date.appendChild(tempatureShowHigh);
+        showDate.textContent = `${dateDisplayed}`
         tempatureShowLow.textContent = `${tempatureLow}°F`
         tempatureShowHigh.textContent = `${tempatureHigh}°F`
     }
-    for (let i = 0; i < 6; i++) {
+    for (let i = 1; i < 7; i++) {
         let dayCount = i.toString();
-    eachDay(dayCount,futureWeatherData.forecast.forecastday[i].day.mintemp_f,futureWeatherData.forecast.forecastday[i].day.maxtemp_f, dayCount )
+    eachDay(futureWeatherData.forecast.forecastday[i].date, dayCount, futureWeatherData.forecast.forecastday[i].day.mintemp_f,futureWeatherData.forecast.forecastday[i].day.maxtemp_f, dayCount )
     }
 }
