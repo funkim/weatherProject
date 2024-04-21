@@ -2,8 +2,8 @@ import { getFutureForcast } from "./getWeather";
 
 const aContainer = document.querySelector('.container');
 
-export async function getDailyWeather(getFutureForcast) {
-    const futureWeatherData = await getFutureForcast();
+export async function getDailyWeather(userInput) {
+    const futureWeatherData = await getFutureForcast(userInput);
     const sevenDayContainer = document.createElement('div') 
     sevenDayContainer.classList.add('futureForecast')
     aContainer.appendChild(sevenDayContainer)

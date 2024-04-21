@@ -50,3 +50,7 @@ h2 {
 .futureForecast > div {
     margin: 10px
 }
+
+.hide {
+    display: none;
+}
